@@ -20,7 +20,7 @@ pipeline {
     }
 	post{
 		failure{
-			mail to 'gudongdong@jd.com', subject: 'The Pipeline failed:('
+			mail to: 'gudongdong@jd.com', subject: 'The Pipeline failed:('
 		}
 	}
 }
