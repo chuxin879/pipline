@@ -7,5 +7,20 @@ pipeline {
                 echo 'hello world'
             }
         }
+		stage('Test'){
+			steps{
+				echo 'Testinbg'
+			}
+		}
+		stage('Deloy'){
+			steps{
+				echo 'Deploying'
+			}
+		}
     }
+	post{
+		failure{
+			mail to 'gudongdong@jd.com', subject: 'The Pipeline failed:('
+		}
+	}
 }
