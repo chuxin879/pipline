@@ -1,11 +1,21 @@
 pipeline {
     agent any
+	
+	// tools{
+		// maven 'mvn-3.5.4'
+	// }
     
     stages {
         stage('Build'){
             steps{
-                echo 'hello world'
+                echo 'hello world'		
             }
+			post{
+				always {
+					echo "stage post always"
+				}
+			}
+			
         }
 		stage('Test'){
 			steps{
@@ -18,9 +28,21 @@ pipeline {
 			}
 		}
     }
+	
 	post{
-		failure{
-			mail to: 'gudongdong@jd.com', subject: 'The Pipeline failed:('
+		changed{
+			echo 'pipline post always'
+		
+		}
+		
+		always{
+			echo 'pipeline post always'
+		
+		}
+		
+		success{
+			echo "pipeline post success"
 		}
 	}
+	
 }
